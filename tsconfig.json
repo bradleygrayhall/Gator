@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "types": ["node"],
     "baseUrl": ".",
     "target": "esnext",
     "module": "esnext",
@@ -8,8 +9,7 @@
     "strict": true,
     "moduleResolution": "Node",
     "esModuleInterop": true,
-    "skipLibCheck": true,
-    "types": ["node"]
+    "skipLibCheck": true
   },
   "include": ["./src/**/*.ts"],
   "exclude": ["node_modules"]
