@@ -16,8 +16,8 @@ This repository runs the CLI with `tsx` through npm. It does **not** currently i
 1. Clone the repository and change into its directory:
 
    ```bash
-   git clone <YOUR_PUBLIC_REPOSITORY_HTTPS_URL>
-   cd <REPOSITORY_DIRECTORY>
+   git clone https://github.com/bradleygrayhall/Gator.git
+   cd Gator
    ```
 
    If you've already downloaded the source, simply open a terminal in the project directory.
@@ -144,3 +144,57 @@ Source code is in `src/`. Database tables and queries are defined in `src/lib/db
 npm run generate  # Generate Drizzle migrations after schema edits
 npm run migrate   # Apply pending migrations
 ```
+
+## Roadmap: possible future milestones
+
+The core Boot.dev project is complete in the provided source. The items below are **optional extensions**, not features currently promised or implemented. They can be tackled independently or grouped into releases. Check a box when the corresponding work is complete.
+
+### Milestone 1 — Browse sorting and filtering
+
+- [ ] Add options to `browse` to sort posts (for example, newest or oldest first).
+- [ ] Filter by feed and, optionally, by date or keyword.
+- [ ] Document the new flags and verify that the current default behaviour is unchanged.
+
+### Milestone 2 — Browse pagination
+
+- [ ] Add page-based or cursor-based pagination to `browse` so large result sets are manageable.
+- [ ] Keep ordering stable across pages and support a configurable page size.
+- [ ] Add tests for empty results and the last page.
+
+### Milestone 3 — Post search
+
+- [ ] Create a `search` command for posts saved in the database.
+- [ ] Support fuzzy or approximate matches in titles and descriptions.
+- [ ] Return a ranked, readable list of matches, with optional limits.
+
+### Milestone 4 — Bookmarks and likes
+
+- [ ] Let users bookmark and/or like saved posts.
+- [ ] Add CLI commands to list and remove bookmarks or likes.
+- [ ] Persist interactions per user without modifying the original RSS feed data.
+
+### Milestone 5 — Concurrent aggregation
+
+- [ ] Enable `agg` to fetch independent feeds concurrently.
+- [ ] Bound concurrency and handle timeouts and individual feed failures safely.
+- [ ] Confirm that duplicate posts are still handled correctly.
+
+### Milestone 6 — Terminal user interface (TUI)
+
+- [ ] Build an interactive post list that supports keyboard navigation.
+- [ ] Show a readable article preview and offer to open the original URL in a browser.
+- [ ] Keep the existing CLI commands usable without the TUI.
+
+### Milestone 7 — HTTP API with authentication
+
+- [ ] Expose feeds, follows, posts, and user actions through an HTTP API.
+- [ ] Implement authentication and authorization so one user cannot access or modify another user's private data.
+- [ ] Provide API documentation, request validation, and basic integration tests.
+
+### Milestone 8 — Background aggregation service
+
+- [ ] Add a supported way to run `agg` without keeping a terminal open.
+- [ ] Restart after crashes, shut down cleanly, and provide useful logs.
+- [ ] Document service setup for the supported operating system or supervisor.
+
+These are ideas for future development rather than a fixed schedule. A sensible starting point is **sorting/filtering**, followed by **pagination** and **search**; infrastructure work can come after those user-facing improvements.
